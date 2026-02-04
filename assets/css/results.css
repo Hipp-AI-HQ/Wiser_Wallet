@@ -1,0 +1,306 @@
+/* ============================================
+   Results Section
+   ============================================ */
+
+.results-section {
+  margin-bottom: 2rem;
+}
+
+.results-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+/* ============================================
+   Result Panels
+   ============================================ */
+
+.result-panel {
+  background: var(--background-white);
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-panel::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--border-color);
+  transition: background 0.3s ease;
+}
+
+/* ============================================
+   Panel States
+   ============================================ */
+
+/* Default state */
+.result-panel {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Winner state */
+.result-panel.winner {
+  border-color: var(--success-green);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.03), rgba(107, 180, 214, 0.03));
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.2), var(--shadow-lg);
+}
+
+.result-panel.winner::before {
+  background: var(--success-green);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+/* Loser state */
+.result-panel.loser {
+  opacity: 0.7;
+  border-color: #e0e0e0;
+}
+
+.result-panel.loser::before {
+  background: #d0d0d0;
+}
+
+/* ============================================
+   Panel Header
+   ============================================ */
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--text-dark);
+}
+
+/* ============================================
+   Winner Badge
+   ============================================ */
+
+.winner-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--success-green);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge-icon {
+  font-size: 1rem;
+}
+
+.badge-text {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   Panel Content
+   ============================================ */
+
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ============================================
+   Bilt Cash Earned Display
+   ============================================ */
+
+.biltcash-earned {
+  background: rgba(107, 180, 214, 0.05);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid var(--light-blue);
+}
+
+.biltcash-earned .metric-row {
+  margin-bottom: 0.75rem;
+}
+
+.biltcash-earned .metric-row:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   Points Breakdown
+   ============================================ */
+
+.points-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.metric-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.metric-row.total {
+  font-weight: 600;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background: rgba(107, 180, 214, 0.05);
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 0.375rem;
+  border-bottom: none;
+}
+
+.metric-row.divider {
+  padding: 0;
+  border-bottom: 2px solid var(--border-color);
+  margin: 0.5rem 0;
+  height: 0;
+}
+
+.metric-row.annual {
+  font-size: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 0.75rem;
+}
+
+.metric-row.net {
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 1rem 0 0 0;
+  border-top: 2px solid var(--border-color);
+  color: var(--primary-teal);
+}
+
+.metric-row.net .label {
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.metric-row .label {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.metric-row .value {
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: right;
+  font-size: 0.95rem;
+}
+
+.metric-row.total .value,
+.metric-row.annual .value {
+  color: var(--primary-teal);
+}
+
+.metric-row.net .value {
+  color: var(--primary-teal);
+  font-size: 1.15rem;
+}
+
+/* ============================================
+   Negative Net Value (Annual Fee Exceeds Points)
+   ============================================ */
+
+.result-panel .metric-row.net.negative {
+  color: var(--warning-red);
+}
+
+.result-panel .metric-row.net.negative .value {
+  color: var(--warning-red);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .results-container {
+    grid-template-columns: 1fr;
+  }
+
+  .result-panel {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .results-container {
+    gap: 1.5rem;
+  }
+
+  .result-panel {
+    padding: 1.25rem;
+  }
+
+  .panel-header h3 {
+    font-size: 1rem;
+  }
+
+  .metric-row .label {
+    font-size: 0.85rem;
+  }
+
+  .metric-row .value {
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes panelUpdate {
+  0% {
+    box-shadow: 0 0 0 3px rgba(107, 180, 214, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(107, 180, 214, 0);
+  }
+}
+
+.result-panel.winner {
+  animation: panelUpdate 0.6s ease;
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+.result-panel:focus-within {
+  box-shadow: 0 0 0 3px var(--light-blue);
+}
+
+.result-panel .metric-row:focus-within {
+  background: rgba(107, 180, 214, 0.1);
+}

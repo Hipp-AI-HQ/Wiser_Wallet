@@ -1,0 +1,441 @@
+/* ============================================
+   Responsive Design - Mobile First
+   ============================================ */
+
+/* ============================================
+   Tablet Breakpoint (768px - 1023px)
+   ============================================ */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    max-width: 90%;
+  }
+
+  section {
+    padding: 1.5rem;
+  }
+
+  .header {
+    padding: 1.5rem 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-selector {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .results-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ============================================
+   Desktop Breakpoint (1024px and up)
+   ============================================ */
+
+@media (min-width: 1024px) {
+  section {
+    padding: 2rem;
+  }
+
+  .card-selector {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .results-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .input-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .input-group.obsidian-category {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ============================================
+   Large Desktop (1440px and up)
+   ============================================ */
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* ============================================
+   Mobile Small (320px - 479px)
+   ============================================ */
+
+@media (max-width: 479px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .header {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+  }
+
+  .header-content {
+    gap: 0.75rem;
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+  .header-text h1 {
+    font-size: 1.35rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .card-selector {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .card-btn {
+    padding: 1rem;
+  }
+
+  .card-name {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .card-fee {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-rate {
+    font-size: 0.85rem;
+  }
+
+  .input-group {
+    margin-bottom: 1.75rem;
+  }
+
+  .value-display {
+    font-size: 1.5rem;
+  }
+
+  .slider-labels {
+    font-size: 0.75rem;
+  }
+
+  .category-toggle {
+    gap: 0.75rem;
+  }
+
+  .toggle-label {
+    font-size: 0.9rem;
+  }
+
+  .recommendation-banner {
+    padding: 1rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .results-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .result-panel {
+    padding: 1rem;
+  }
+
+  .panel-header h3 {
+    font-size: 1rem;
+  }
+
+  .tier-marker {
+    font-size: 0.7rem;
+  }
+
+  .metric-row .label {
+    font-size: 0.85rem;
+  }
+
+  .metric-row .value {
+    font-size: 0.9rem;
+  }
+
+  .metric-row.net .value {
+    font-size: 1rem;
+  }
+
+  .footer {
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer p {
+    font-size: 0.8rem;
+  }
+}
+
+/* ============================================
+   Mobile Medium (480px - 767px)
+   ============================================ */
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  section {
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .header {
+    padding: 1.25rem 0;
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .logo {
+    width: 100px;
+  }
+
+  .card-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .input-group {
+    margin-bottom: 2rem;
+  }
+
+  .value-display {
+    font-size: 1.5rem;
+  }
+
+  .results-container {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .result-panel {
+    padding: 1.25rem;
+  }
+
+  .footer {
+    padding: 1.5rem 0;
+    margin-top: 2.5rem;
+  }
+}
+
+/* ============================================
+   Touch Devices
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  button {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .slider::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+  }
+
+  input[type='radio'] {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ============================================
+   High DPI Screens
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* ============================================
+   Dark Mode Support
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-light: #111827;
+    --background-white: #1f2937;
+    --text-dark: #f3f4f6;
+    --text-light: #d1d5db;
+    --border-color: #374151;
+  }
+
+  .result-panel {
+    background: var(--background-white);
+  }
+
+  .result-panel.winner {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(107, 180, 214, 0.1));
+  }
+
+  .obsidian-category {
+    background: rgba(107, 180, 214, 0.1);
+  }
+
+  .tier-indicator {
+    background: rgba(107, 180, 214, 0.1);
+  }
+
+  .biltcash-earned {
+    background: rgba(107, 180, 214, 0.1);
+  }
+
+  .metric-row.total {
+    background: rgba(107, 180, 214, 0.1);
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    border-color: var(--background-white);
+  }
+
+  input[type='range']::-moz-range-thumb {
+    border-color: var(--background-white);
+  }
+}
+
+/* ============================================
+   Landscape Orientation (Mobile)
+   ============================================ */
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .header {
+    margin-bottom: 1rem;
+  }
+
+  section {
+    margin-bottom: 1rem;
+  }
+
+  .card-selector {
+    gap: 0.5rem;
+  }
+
+  .input-group {
+    margin-bottom: 1rem;
+  }
+
+  .value-display {
+    font-size: 1.25rem;
+  }
+}
+
+/* ============================================
+   Very Wide Screens
+   ============================================ */
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  section {
+    padding: 2.5rem;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .header {
+    margin-bottom: 1rem;
+    page-break-after: avoid;
+  }
+
+  section {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    margin-bottom: 1.5rem;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  input,
+  button {
+    display: none;
+  }
+
+  .recommendation-banner {
+    display: none;
+  }
+
+  .results-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .result-panel {
+    page-break-inside: avoid;
+  }
+}

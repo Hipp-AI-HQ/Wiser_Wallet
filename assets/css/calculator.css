@@ -1,0 +1,346 @@
+/* ============================================
+   Input Section & Controls
+   ============================================ */
+
+.input-section {
+  margin-bottom: 2rem;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 2.5rem;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+/* Input Display Value */
+.input-display {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.value-display {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary-teal);
+}
+
+/* ============================================
+   Custom Slider Styling
+   ============================================ */
+
+.slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: linear-gradient(
+    to right,
+    var(--light-blue) 0%,
+    var(--light-blue) var(--slider-value, 20%),
+    var(--border-color) var(--slider-value, 20%),
+    var(--border-color) 100%
+  );
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  margin-bottom: 1rem;
+}
+
+/* Webkit slider thumb (Chrome, Safari) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary-teal);
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  border: 2px solid var(--background-white);
+}
+
+.slider::-webkit-slider-thumb:hover {
+  width: 28px;
+  height: 28px;
+  box-shadow: var(--shadow-lg);
+  background: var(--light-blue);
+}
+
+/* Firefox slider thumb */
+.slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary-teal);
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  border: 2px solid var(--background-white);
+  transition: all 0.3s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  width: 28px;
+  height: 28px;
+  box-shadow: var(--shadow-lg);
+  background: var(--light-blue);
+}
+
+/* Firefox track */
+.slider::-moz-range-track {
+  background: transparent;
+  border: none;
+}
+
+.slider::-moz-range-progress {
+  background: var(--light-blue);
+  height: 8px;
+  border-radius: 5px;
+}
+
+/* ============================================
+   Slider Labels
+   ============================================ */
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   Card Selection Section
+   ============================================ */
+
+.card-selection-section {
+  margin-bottom: 2rem;
+}
+
+.card-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Card Buttons */
+.card-btn {
+  padding: 1.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
+  background: var(--background-white);
+  text-align: left;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-btn:hover {
+  border-color: var(--light-blue);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-btn.active {
+  border-color: var(--primary-teal);
+  background: linear-gradient(135deg, rgba(13, 79, 92, 0.05), rgba(107, 180, 214, 0.05));
+  box-shadow: var(--shadow-lg);
+  border-width: 3px;
+}
+
+.card-btn:focus {
+  outline: 2px solid var(--light-blue);
+  outline-offset: 2px;
+}
+
+.card-name {
+  display: block;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.card-fee {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-bottom: 0.75rem;
+}
+
+.card-rate {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-teal);
+}
+
+/* ============================================
+   Obsidian Category Selection
+   ============================================ */
+
+.obsidian-category {
+  background: rgba(107, 180, 214, 0.05);
+  border: 2px solid var(--light-blue);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+}
+
+.category-toggle {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.toggle-label input[type='radio'] {
+  accent-color: var(--primary-teal);
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.toggle-label:hover {
+  color: var(--primary-teal);
+}
+
+/* ============================================
+   Recommendation Banner
+   ============================================ */
+
+.recommendation-banner {
+  background: var(--success-green);
+  color: var(--background-white);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  animation: slideDown 0.3s ease;
+  box-shadow: var(--shadow-md);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Tier Indicator
+   ============================================ */
+
+.tier-indicator {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(107, 180, 214, 0.05);
+  border-radius: 0.5rem;
+  border-left: 4px solid var(--light-blue);
+}
+
+.tier-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.tier-progress {
+  margin-bottom: 1rem;
+}
+
+.tier-progress-bar {
+  width: 100%;
+  height: 12px;
+  background: var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.tier-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--light-blue), var(--primary-teal));
+  width: 0%;
+  transition: width 0.4s ease;
+  border-radius: 10px;
+}
+
+.tier-markers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.marker small {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-light);
+  font-weight: 400;
+  margin-top: 0.25rem;
+}
+
+.current-tier {
+  font-size: 0.9rem;
+  color: var(--primary-teal);
+  font-weight: 600;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .card-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .card-btn {
+    padding: 1.25rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .logo {
+    width: 100px;
+  }
+}

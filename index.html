@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bilt Card Points Calculator - Compare points earning between Tiered and Bilt Cash systems">
+  <title>Bilt Card Points Calculator</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/calculator.css">
+  <link rel="stylesheet" href="assets/css/results.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <img src="assets/images/logo.png" alt="Wiser Wallet Logo" class="logo">
+        <div class="header-text">
+          <h1>Bilt Card Points Calculator</h1>
+          <p class="subtitle">Compare your earning potential across all Bilt cards</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Card Selection Section -->
+    <section class="card-selection-section">
+      <h2>Select Your Card</h2>
+      <div class="card-selector">
+        <button class="card-btn active" data-card="blue" aria-label="Blue Card - No annual fee">
+          <span class="card-name">Blue Card</span>
+          <span class="card-fee">$0 Annual Fee</span>
+          <span class="card-rate">1x Everyday</span>
+        </button>
+        <button class="card-btn" data-card="obsidian" aria-label="Obsidian Card - $95 annual fee">
+          <span class="card-name">Obsidian Card</span>
+          <span class="card-fee">$95 Annual Fee</span>
+          <span class="card-rate">3x on selected category</span>
+        </button>
+        <button class="card-btn" data-card="palladium" aria-label="Palladium Card - $495 annual fee">
+          <span class="card-name">Palladium Card</span>
+          <span class="card-fee">$495 Annual Fee</span>
+          <span class="card-rate">2x Everyday</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Input Controls Section -->
+    <section class="input-section">
+      <h2>Your Spending</h2>
+
+      <!-- Rent/Mortgage Input -->
+      <div class="input-group">
+        <label for="rent-slider">Monthly Rent/Mortgage</label>
+        <div class="input-display">
+          <span id="rent-value" class="value-display">$2,000</span>
+        </div>
+        <input type="range" id="rent-slider" class="slider" min="0" max="10000" step="100" value="2000" aria-label="Monthly rent or mortgage payment">
+        <div class="slider-labels">
+          <span>$0</span>
+          <span>$10,000+</span>
+        </div>
+      </div>
+
+      <!-- Spending Input -->
+      <div class="input-group">
+        <label for="spend-slider">Monthly Everyday Spending</label>
+        <div class="input-display">
+          <span id="spend-value" class="value-display">$1,000</span>
+        </div>
+        <input type="range" id="spend-slider" class="slider" min="0" max="10000" step="100" value="1000" aria-label="Monthly everyday spending">
+        <div class="slider-labels">
+          <span>$0</span>
+          <span>$10,000+</span>
+        </div>
+      </div>
+
+      <!-- Obsidian Category Selection -->
+      <div id="obsidian-category" class="input-group obsidian-category hidden" aria-label="Category selection for Obsidian card">
+        <label>Choose Your 3x Category</label>
+        <div class="category-toggle">
+          <label class="toggle-label">
+            <input type="radio" name="category" value="dining" checked>
+            <span>Dining</span>
+          </label>
+          <label class="toggle-label">
+            <input type="radio" name="category" value="grocery">
+            <span>Grocery</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommendation Banner -->
+    <div id="recommendation-banner" class="recommendation-banner hidden" role="alert" aria-live="polite">
+      <!-- Dynamic content inserted by JavaScript -->
+    </div>
+
+    <!-- Results Section -->
+    <section class="results-section">
+      <h2>Your Potential Points</h2>
+
+      <div class="results-container">
+        <!-- Tiered System Panel -->
+        <div class="result-panel" id="tiered-panel">
+          <div class="panel-header">
+            <h3>Tiered System</h3>
+            <div class="winner-badge hidden" aria-label="This is the best option for you">
+              <span class="badge-icon">✓</span>
+              <span class="badge-text">Best</span>
+            </div>
+          </div>
+
+          <div class="panel-content">
+            <!-- Tier Indicator -->
+            <div class="tier-indicator">
+              <div class="tier-label">Spending Tier</div>
+              <div class="tier-progress">
+                <div class="tier-progress-bar">
+                  <div class="tier-fill" id="tiered-fill"></div>
+                </div>
+                <div class="tier-markers">
+                  <span class="marker" data-tier="25">25%<br><small>0.5x</small></span>
+                  <span class="marker" data-tier="50">50%<br><small>0.75x</small></span>
+                  <span class="marker" data-tier="75">75%<br><small>1x</small></span>
+                  <span class="marker" data-tier="100">100%<br><small>1.25x</small></span>
+                </div>
+              </div>
+              <div class="current-tier" id="current-tier"></div>
+            </div>
+
+            <!-- Points Breakdown -->
+            <div class="points-breakdown">
+              <div class="metric-row">
+                <span class="label">Rent Points:</span>
+                <span class="value" id="tiered-rent-points">0</span>
+              </div>
+              <div class="metric-row">
+                <span class="label">Spending Points:</span>
+                <span class="value" id="tiered-spend-points">0</span>
+              </div>
+              <div class="metric-row total">
+                <span class="label">Monthly Total:</span>
+                <span class="value" id="tiered-monthly-points">0</span>
+              </div>
+              <div class="metric-row divider"></div>
+              <div class="metric-row annual">
+                <span class="label">Annual Points:</span>
+                <span class="value" id="tiered-annual-points">0</span>
+              </div>
+              <div class="metric-row net">
+                <span class="label">Net Value (after fee):</span>
+                <span class="value" id="tiered-net-points">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bilt Cash System Panel -->
+        <div class="result-panel" id="biltcash-panel">
+          <div class="panel-header">
+            <h3>Bilt Cash System</h3>
+            <div class="winner-badge hidden" aria-label="This is the best option for you">
+              <span class="badge-icon">✓</span>
+              <span class="badge-text">Best</span>
+            </div>
+          </div>
+
+          <div class="panel-content">
+            <!-- Bilt Cash Earned -->
+            <div class="biltcash-earned">
+              <div class="metric-row">
+                <span class="label">Bilt Cash Earned (4%):</span>
+                <span class="value" id="biltcash-earned">$0.00</span>
+              </div>
+              <div class="metric-row">
+                <span class="label">Unlocked Rent:</span>
+                <span class="value" id="biltcash-unlocked">$0</span>
+              </div>
+            </div>
+
+            <!-- Points Breakdown -->
+            <div class="points-breakdown">
+              <div class="metric-row">
+                <span class="label">Rent Points:</span>
+                <span class="value" id="biltcash-rent-points">0</span>
+              </div>
+              <div class="metric-row">
+                <span class="label">Spending Points:</span>
+                <span class="value" id="biltcash-spend-points">0</span>
+              </div>
+              <div class="metric-row total">
+                <span class="label">Monthly Total:</span>
+                <span class="value" id="biltcash-monthly-points">0</span>
+              </div>
+              <div class="metric-row divider"></div>
+              <div class="metric-row annual">
+                <span class="label">Annual Points:</span>
+                <span class="value" id="biltcash-annual-points">0</span>
+              </div>
+              <div class="metric-row net">
+                <span class="label">Net Value (after fee):</span>
+                <span class="value" id="biltcash-net-points">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p><strong>Disclaimer:</strong> This calculator provides estimates based on the current Bilt card terms and conditions. Please visit <a href="https://www.bilt.com/card" target="_blank" rel="noopener noreferrer">bilt.com/card</a> for official details and terms.</p>
+      <p>Points values and earning rates are subject to change. Always verify current rates with Bilt before making decisions.</p>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/calculator.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
