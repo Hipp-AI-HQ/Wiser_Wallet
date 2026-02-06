@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bilt Card Points Calculator - Compare points earning between Tiered and Bilt Cash systems">
-  <title>Bilt Card Points Calculator</title>
+  <meta name="description" content="Bilt Card 2.0 Calculator - Compare points earning between Tiered and Bilt Cash systems">
+  <title>Bilt Card 2.0 Calculator</title>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/main.css">
@@ -19,7 +19,7 @@
       <div class="header-content">
         <img src="assets/images/logo.png" alt="Wiser Wallet Logo" class="logo">
         <div class="header-text">
-          <h1>Bilt Card Points Calculator</h1>
+          <h1>Bilt Card 2.0 Calculator</h1>
           <p class="subtitle">Compare your earning potential across all Bilt cards</p>
         </div>
       </div>
@@ -40,7 +40,7 @@
         <button class="card-btn" data-card="obsidian" aria-label="Obsidian Card - $95 annual fee">
           <span class="card-name">Obsidian Card</span>
           <span class="card-fee">$95 Annual Fee</span>
-          <span class="card-rate">3x on selected category</span>
+          <span class="card-rate">1x Everyday, 2x Travel, 3x Dining/Grocery</span>
         </button>
         <button class="card-btn" data-card="palladium" aria-label="Palladium Card - $495 annual fee">
           <span class="card-name">Palladium Card</span>
@@ -58,40 +58,64 @@
       <div class="input-group">
         <label for="rent-slider">Monthly Rent/Mortgage</label>
         <div class="input-display">
-          <span id="rent-value" class="value-display">$2,000</span>
+          <span class="currency-prefix">$</span>
+          <input type="text" id="rent-value" class="value-input" value="2,000" inputmode="numeric" aria-label="Monthly rent or mortgage amount">
         </div>
         <input type="range" id="rent-slider" class="slider" min="0" max="10000" step="100" value="2000" aria-label="Monthly rent or mortgage payment">
-        <div class="slider-labels">
-          <span>$0</span>
-          <span>$10,000+</span>
-        </div>
       </div>
 
       <!-- Spending Input -->
       <div class="input-group">
         <label for="spend-slider">Monthly Everyday Spending</label>
         <div class="input-display">
-          <span id="spend-value" class="value-display">$1,000</span>
+          <span class="currency-prefix">$</span>
+          <input type="text" id="spend-value" class="value-input" value="1,000" inputmode="numeric" aria-label="Monthly everyday spending amount">
         </div>
         <input type="range" id="spend-slider" class="slider" min="0" max="10000" step="100" value="1000" aria-label="Monthly everyday spending">
-        <div class="slider-labels">
-          <span>$0</span>
-          <span>$10,000+</span>
-        </div>
       </div>
 
-      <!-- Obsidian Category Selection -->
-      <div id="obsidian-category" class="input-group obsidian-category hidden" aria-label="Category selection for Obsidian card">
-        <label>Choose Your 3x Category</label>
-        <div class="category-toggle">
-          <label class="toggle-label">
-            <input type="radio" name="category" value="dining" checked>
-            <span>Dining</span>
-          </label>
-          <label class="toggle-label">
-            <input type="radio" name="category" value="grocery">
-            <span>Grocery</span>
-          </label>
+      <!-- Obsidian Spending Breakdown -->
+      <div id="obsidian-category" class="input-group obsidian-category hidden" aria-label="Spending breakdown for Obsidian card">
+        <label>Spending Category Breakdown</label>
+        <p class="breakdown-hint">Allocate your monthly spending across categories</p>
+
+        <!-- 3x Dining/Grocery sub-slider -->
+        <div class="sub-input-group">
+          <div class="sub-input-header">
+            <span class="sub-label">3x Dining/Grocery</span>
+            <div class="input-display sub-display">
+              <span class="currency-prefix sub-prefix">$</span>
+              <input type="text" id="obsidian-dining-value" class="value-input sub-value" value="330" inputmode="numeric" aria-label="Dining and grocery spending amount">
+            </div>
+          </div>
+          <input type="range" id="obsidian-dining-slider" class="slider sub-slider" min="0" max="1000" step="10" value="330" aria-label="Dining and grocery spending">
+        </div>
+
+        <!-- 2x Travel sub-slider -->
+        <div class="sub-input-group">
+          <div class="sub-input-header">
+            <span class="sub-label">2x Travel</span>
+            <div class="input-display sub-display">
+              <span class="currency-prefix sub-prefix">$</span>
+              <input type="text" id="obsidian-travel-value" class="value-input sub-value" value="330" inputmode="numeric" aria-label="Travel spending amount">
+            </div>
+          </div>
+          <input type="range" id="obsidian-travel-slider" class="slider sub-slider" min="0" max="1000" step="10" value="330" aria-label="Travel spending">
+        </div>
+
+        <!-- 1x Everyday (auto-calculated) -->
+        <div class="sub-input-group auto-calculated">
+          <div class="sub-input-header">
+            <span class="sub-label">1x Everyday</span>
+            <div class="input-display sub-display">
+              <span class="currency-prefix sub-prefix">$</span>
+              <span id="obsidian-everyday-value" class="sub-value-readonly">340</span>
+            </div>
+          </div>
+          <div class="auto-calc-bar">
+            <div class="auto-calc-fill" id="obsidian-everyday-fill"></div>
+          </div>
+          <span class="auto-calc-note">Auto-calculated as remainder</span>
         </div>
       </div>
     </section>
@@ -137,7 +161,7 @@
             <!-- Points Breakdown -->
             <div class="points-breakdown">
               <div class="metric-row">
-                <span class="label">Rent Points:</span>
+                <span class="label">Rent/Mortgage Points:</span>
                 <span class="value" id="tiered-rent-points">0</span>
               </div>
               <div class="metric-row">
@@ -149,13 +173,9 @@
                 <span class="value" id="tiered-monthly-points">0</span>
               </div>
               <div class="metric-row divider"></div>
-              <div class="metric-row annual">
+              <div class="metric-row annual final-row">
                 <span class="label">Annual Points:</span>
                 <span class="value" id="tiered-annual-points">0</span>
-              </div>
-              <div class="metric-row net">
-                <span class="label">Net Value (after fee):</span>
-                <span class="value" id="tiered-net-points">0</span>
               </div>
             </div>
           </div>
@@ -187,7 +207,7 @@
             <!-- Points Breakdown -->
             <div class="points-breakdown">
               <div class="metric-row">
-                <span class="label">Rent Points:</span>
+                <span class="label">Rent/Mortgage Points:</span>
                 <span class="value" id="biltcash-rent-points">0</span>
               </div>
               <div class="metric-row">
@@ -199,13 +219,9 @@
                 <span class="value" id="biltcash-monthly-points">0</span>
               </div>
               <div class="metric-row divider"></div>
-              <div class="metric-row annual">
+              <div class="metric-row annual final-row">
                 <span class="label">Annual Points:</span>
                 <span class="value" id="biltcash-annual-points">0</span>
-              </div>
-              <div class="metric-row net">
-                <span class="label">Net Value (after fee):</span>
-                <span class="value" id="biltcash-net-points">0</span>
               </div>
             </div>
           </div>

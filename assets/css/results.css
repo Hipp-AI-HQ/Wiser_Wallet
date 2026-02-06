@@ -52,13 +52,13 @@
 /* Winner state */
 .result-panel.winner {
   border-color: var(--success-green);
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.03), rgba(107, 180, 214, 0.03));
-  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.2), var(--shadow-lg);
+  background: linear-gradient(135deg, rgba(4, 211, 128, 0.03), rgba(117, 194, 230, 0.03));
+  box-shadow: 0 0 0 1px rgba(4, 211, 128, 0.2), var(--shadow-lg);
 }
 
 .result-panel.winner::before {
   background: var(--success-green);
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 10px rgba(4, 211, 128, 0.3);
 }
 
 /* Loser state */
@@ -130,7 +130,7 @@
    ============================================ */
 
 .biltcash-earned {
-  background: rgba(107, 180, 214, 0.05);
+  background: rgba(117, 194, 230, 0.05);
   padding: 1rem;
   border-radius: 0.5rem;
   border-left: 4px solid var(--light-blue);
@@ -171,7 +171,7 @@
   font-weight: 600;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  background: rgba(107, 180, 214, 0.05);
+  background: rgba(117, 194, 230, 0.05);
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   margin: 0.5rem 0;
@@ -192,17 +192,24 @@
   padding-bottom: 0.75rem;
 }
 
-.metric-row.net {
+.metric-row.annual.final-row {
   font-weight: 700;
-  font-size: 1.05rem;
-  padding: 1rem 0 0 0;
-  border-top: 2px solid var(--border-color);
-  color: var(--primary-teal);
+  font-size: 1.1rem;
+  padding: 1rem 0.75rem;
+  background: rgba(117, 194, 230, 0.08);
+  border-radius: 0.375rem;
+  border-bottom: none;
+  margin-top: 0.5rem;
 }
 
-.metric-row.net .label {
-  color: var(--text-light);
-  font-weight: 600;
+.metric-row.annual.final-row .label {
+  color: var(--primary-teal);
+  font-weight: 700;
+}
+
+.metric-row.annual.final-row .value {
+  font-size: 1.2rem;
+  color: var(--primary-teal);
 }
 
 .metric-row .label {
@@ -221,23 +228,6 @@
 .metric-row.total .value,
 .metric-row.annual .value {
   color: var(--primary-teal);
-}
-
-.metric-row.net .value {
-  color: var(--primary-teal);
-  font-size: 1.15rem;
-}
-
-/* ============================================
-   Negative Net Value (Annual Fee Exceeds Points)
-   ============================================ */
-
-.result-panel .metric-row.net.negative {
-  color: var(--warning-red);
-}
-
-.result-panel .metric-row.net.negative .value {
-  color: var(--warning-red);
 }
 
 /* ============================================
@@ -282,10 +272,10 @@
 
 @keyframes panelUpdate {
   0% {
-    box-shadow: 0 0 0 3px rgba(107, 180, 214, 0.2);
+    box-shadow: 0 0 0 3px rgba(117, 194, 230, 0.2);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(107, 180, 214, 0);
+    box-shadow: 0 0 0 0 rgba(117, 194, 230, 0);
   }
 }
 
@@ -302,5 +292,5 @@
 }
 
 .result-panel .metric-row:focus-within {
-  background: rgba(107, 180, 214, 0.1);
+  background: rgba(117, 194, 230, 0.1);
 }

@@ -39,13 +39,3 @@ const MONTHS_PER_YEAR = 12;
 const DEFAULT_MONTHLY_RENT = 2000;
 const DEFAULT_MONTHLY_SPEND = 1000;
 const DEFAULT_CARD = 'blue';
-const DEFAULT_OBSIDIAN_CATEGORY = 'dining';
-
-// Obsidian Category Assumption
-// Since we don't have detailed spending breakdown, we assume
-// the user spends proportionally across categories.
-// For the 3x category, we apply a weighted average.
-const OBSIDIAN_CATEGORY_WEIGHT = 0.5; // Assume 50% of spending in 3x category
-// This gives: (0.5 * 3) + (0.5 * 1) = 2.0 average multiplier
-// But we'll be more conservative and use: (0.33 * 3) + (0.67 * 1) = 1.66
-const OBSIDIAN_AVERAGE_MULTIPLIER = 1.66;

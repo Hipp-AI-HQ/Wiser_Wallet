@@ -49,10 +49,9 @@
   }
 
   .input-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    align-items: start;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .input-group.obsidian-category {
@@ -145,20 +144,9 @@
     margin-bottom: 1.75rem;
   }
 
-  .value-display {
-    font-size: 1.5rem;
-  }
-
-  .slider-labels {
-    font-size: 0.75rem;
-  }
-
-  .category-toggle {
-    gap: 0.75rem;
-  }
-
-  .toggle-label {
-    font-size: 0.9rem;
+  .currency-prefix,
+  .value-input {
+    font-size: 1.85rem;
   }
 
   .recommendation-banner {
@@ -192,7 +180,7 @@
     font-size: 0.9rem;
   }
 
-  .metric-row.net .value {
+  .metric-row.annual.final-row .value {
     font-size: 1rem;
   }
 
@@ -246,8 +234,9 @@
     margin-bottom: 2rem;
   }
 
-  .value-display {
-    font-size: 1.5rem;
+  .currency-prefix,
+  .value-input {
+    font-size: 1.85rem;
   }
 
   .results-container {
@@ -277,13 +266,13 @@
   }
 
   .slider::-webkit-slider-thumb {
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
   }
 
   .slider::-moz-range-thumb {
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
   }
 
   input[type='radio'] {
@@ -299,52 +288,6 @@
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .logo {
     image-rendering: -webkit-optimize-contrast;
-  }
-}
-
-/* ============================================
-   Dark Mode Support
-   ============================================ */
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-light: #111827;
-    --background-white: #1f2937;
-    --text-dark: #f3f4f6;
-    --text-light: #d1d5db;
-    --border-color: #374151;
-  }
-
-  .result-panel {
-    background: var(--background-white);
-  }
-
-  .result-panel.winner {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(107, 180, 214, 0.1));
-  }
-
-  .obsidian-category {
-    background: rgba(107, 180, 214, 0.1);
-  }
-
-  .tier-indicator {
-    background: rgba(107, 180, 214, 0.1);
-  }
-
-  .biltcash-earned {
-    background: rgba(107, 180, 214, 0.1);
-  }
-
-  .metric-row.total {
-    background: rgba(107, 180, 214, 0.1);
-  }
-
-  input[type='range']::-webkit-slider-thumb {
-    border-color: var(--background-white);
-  }
-
-  input[type='range']::-moz-range-thumb {
-    border-color: var(--background-white);
   }
 }
 
@@ -369,8 +312,9 @@
     margin-bottom: 1rem;
   }
 
-  .value-display {
-    font-size: 1.25rem;
+  .currency-prefix,
+  .value-input {
+    font-size: 1.5rem;
   }
 }
 

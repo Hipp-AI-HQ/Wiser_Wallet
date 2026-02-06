@@ -142,19 +142,27 @@ function compareMethods(tieredResults, biltCashResults) {
 }
 
 /**
- * Get card's everyday spending multiplier, handling Obsidian's category bonus
- * @param {string} card - Card type ('blue', 'obsidian', 'palladium')
- * @param {string} obsidianCategory - Selected category for Obsidian ('dining' or 'grocery')
- * @returns {number} Effective everyday spending multiplier
+ * Get card's effective spending multiplier
+ * For Obsidian: calculate from actual spending breakdown
+ * @param {string} card - Card type
+ * @param {object} obsidianBreakdown - {dining, travel, everyday} amounts
+ * @param {number} totalSpending - Total monthly spending
+ * @returns {number} Effective multiplier
  */
-function getCardMultiplier(card, obsidianCategory = 'dining') {
+function getCardMultiplier(card, obsidianBreakdown, totalSpending) {
   const cardConfig = CARD_CONFIGS[card];
 
-  if (card === 'obsidian') {
-    // For Obsidian: Use weighted average since we don't have spending breakdown
-    // Assume ~33% of spending in 3x category, ~67% in 1x category
-    // This gives: (0.33 * 3) + (0.67 * 1) = 1.66 average
-    return OBSIDIAN_AVERAGE_MULTIPLIER;
+  if (card === 'obsidian' && totalSpending > 0 && obsidianBreakdown) {
+    // Calculate weighted multiplier from actual breakdown
+    const diningPoints = obsidianBreakdown.dining * cardConfig.categoryMultiplier;   // 3x
+    const travelPoints = obsidianBreakdown.travel * cardConfig.travelMultiplier;      // 2x
+    const everydayPoints = obsidianBreakdown.everyday * cardConfig.everydayMultiplier; // 1x
+    const totalPoints = diningPoints + travelPoints + everydayPoints;
+    return totalPoints / totalSpending;
+  }
+
+  if (card === 'obsidian' && totalSpending === 0) {
+    return 1;
   }
 
   return cardConfig.everydayMultiplier;
@@ -165,12 +173,12 @@ function getCardMultiplier(card, obsidianCategory = 'dining') {
  * @param {string} card - Card type
  * @param {number} monthlyRent - Monthly rent/mortgage
  * @param {number} monthlySpending - Monthly everyday spending
- * @param {string} obsidianCategory - Obsidian category selection
+ * @param {object} obsidianBreakdown - Obsidian spending breakdown
  * @returns {object} Full calculation results
  */
-function runFullCalculation(card, monthlyRent, monthlySpending, obsidianCategory = 'dining') {
+function runFullCalculation(card, monthlyRent, monthlySpending, obsidianBreakdown) {
   const cardConfig = CARD_CONFIGS[card];
-  const cardMultiplier = getCardMultiplier(card, obsidianCategory);
+  const cardMultiplier = getCardMultiplier(card, obsidianBreakdown, monthlySpending);
 
   const tieredResults = calculateTieredSystem(
     monthlyRent,

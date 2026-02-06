@@ -54,7 +54,6 @@ function renderTieredResults(results) {
   document.getElementById('tiered-spend-points').textContent = formatNumber(results.spendingPoints);
   document.getElementById('tiered-monthly-points').textContent = formatNumber(results.monthlyPoints);
   document.getElementById('tiered-annual-points').textContent = formatNumber(results.annualPoints);
-  document.getElementById('tiered-net-points').textContent = formatNumber(results.netAnnualPoints);
 
   // Update tier progress indicator
   updateTierIndicator(results.spendRatio);
@@ -71,7 +70,6 @@ function renderBiltCashResults(results) {
   document.getElementById('biltcash-spend-points').textContent = formatNumber(results.spendingPoints);
   document.getElementById('biltcash-monthly-points').textContent = formatNumber(results.monthlyPoints);
   document.getElementById('biltcash-annual-points').textContent = formatNumber(results.annualPoints);
-  document.getElementById('biltcash-net-points').textContent = formatNumber(results.netAnnualPoints);
 }
 
 /**
@@ -124,14 +122,14 @@ function updateRecommendationBanner(comparison) {
 }
 
 /**
- * Update slider display value
+ * Update slider display value (works with input elements)
  * @param {string} sliderId - ID of the slider element
  * @param {string} displayId - ID of the display element
  * @param {number} value - Value to display
  */
 function updateSliderDisplay(sliderId, displayId, value) {
   const display = document.getElementById(displayId);
-  display.textContent = `$${formatNumber(value)}`;
+  display.value = formatNumber(value);
 }
 
 /**
