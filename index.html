@@ -59,18 +59,20 @@
         <label for="rent-slider">Monthly Rent/Mortgage</label>
         <div class="input-display">
           <span class="currency-prefix">$</span>
-          <input type="text" id="rent-value" class="value-input" value="2,000" inputmode="numeric" aria-label="Monthly rent or mortgage amount">
+          <input type="text" id="rent-value" class="value-input" value="2,000" inputmode="decimal" aria-label="Monthly rent or mortgage amount">
         </div>
+        <p class="input-helper-text">Type Exact Amount</p>
         <input type="range" id="rent-slider" class="slider" min="0" max="10000" step="100" value="2000" aria-label="Monthly rent or mortgage payment">
       </div>
 
       <!-- Spending Input -->
       <div class="input-group">
-        <label for="spend-slider">Monthly Everyday Spending</label>
+        <label for="spend-slider" id="spend-label">Monthly Everyday Spending</label>
         <div class="input-display">
           <span class="currency-prefix">$</span>
-          <input type="text" id="spend-value" class="value-input" value="1,000" inputmode="numeric" aria-label="Monthly everyday spending amount">
+          <input type="text" id="spend-value" class="value-input" value="1,000" inputmode="decimal" aria-label="Monthly everyday spending amount">
         </div>
+        <p class="input-helper-text">Type Exact Amount</p>
         <input type="range" id="spend-slider" class="slider" min="0" max="10000" step="100" value="1000" aria-label="Monthly everyday spending">
       </div>
 
@@ -83,9 +85,12 @@
         <div class="sub-input-group">
           <div class="sub-input-header">
             <span class="sub-label">3x Dining/Grocery</span>
-            <div class="input-display sub-display">
-              <span class="currency-prefix sub-prefix">$</span>
-              <input type="text" id="obsidian-dining-value" class="value-input sub-value" value="330" inputmode="numeric" aria-label="Dining and grocery spending amount">
+            <div class="sub-input-right">
+              <div class="input-display sub-display">
+                <span class="currency-prefix sub-prefix">$</span>
+                <input type="text" id="obsidian-dining-value" class="value-input sub-value" value="330" inputmode="decimal" aria-label="Dining and grocery spending amount">
+              </div>
+              <p class="input-helper-text">Type Exact Amount</p>
             </div>
           </div>
           <input type="range" id="obsidian-dining-slider" class="slider sub-slider" min="0" max="1000" step="10" value="330" aria-label="Dining and grocery spending">
@@ -95,9 +100,12 @@
         <div class="sub-input-group">
           <div class="sub-input-header">
             <span class="sub-label">2x Travel</span>
-            <div class="input-display sub-display">
-              <span class="currency-prefix sub-prefix">$</span>
-              <input type="text" id="obsidian-travel-value" class="value-input sub-value" value="330" inputmode="numeric" aria-label="Travel spending amount">
+            <div class="sub-input-right">
+              <div class="input-display sub-display">
+                <span class="currency-prefix sub-prefix">$</span>
+                <input type="text" id="obsidian-travel-value" class="value-input sub-value" value="330" inputmode="decimal" aria-label="Travel spending amount">
+              </div>
+              <p class="input-helper-text">Type Exact Amount</p>
             </div>
           </div>
           <input type="range" id="obsidian-travel-slider" class="slider sub-slider" min="0" max="1000" step="10" value="330" aria-label="Travel spending">
@@ -107,9 +115,11 @@
         <div class="sub-input-group auto-calculated">
           <div class="sub-input-header">
             <span class="sub-label">1x Everyday</span>
-            <div class="input-display sub-display">
-              <span class="currency-prefix sub-prefix">$</span>
-              <span id="obsidian-everyday-value" class="sub-value-readonly">340</span>
+            <div class="sub-input-right">
+              <div class="input-display sub-display">
+                <span class="currency-prefix sub-prefix">$</span>
+                <span id="obsidian-everyday-value" class="sub-value-readonly">340</span>
+              </div>
             </div>
           </div>
           <div class="auto-calc-bar">

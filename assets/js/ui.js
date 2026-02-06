@@ -130,6 +130,7 @@ function updateRecommendationBanner(comparison) {
 function updateSliderDisplay(sliderId, displayId, value) {
   const display = document.getElementById(displayId);
   display.value = formatNumber(value);
+  if (typeof fitTextToBox === 'function') fitTextToBox(display);
 }
 
 /**

@@ -19,6 +19,9 @@ function initializeCalculator() {
   // Set initial slider track fills
   updateSliderTrackFill(document.getElementById('rent-slider'));
   updateSliderTrackFill(document.getElementById('spend-slider'));
+
+  // Auto-size all inputs on load
+  fitAllInputs();
 }
 
 /**
@@ -39,8 +42,34 @@ function updateSliderTrackFill(slider) {
  * @returns {number} Parsed number
  */
 function parseCurrencyInput(str) {
-  const cleaned = str.replace(/[^0-9]/g, '');
-  return parseInt(cleaned, 10) || 0;
+  const cleaned = str.replace(/[^0-9.]/g, '');
+  return Math.round(parseFloat(cleaned)) || 0;
+}
+
+/**
+ * Shrink font size to fit larger numbers inside fixed-width gray box.
+ * Box is sized for 4-digit numbers (e.g. "2,000"). Larger values shrink.
+ * @param {HTMLElement} input - The text input element
+ */
+function fitTextToBox(input) {
+  const len = (input.value || '').length;
+  const isSub = input.classList.contains('sub-value');
+  const baseSize = isSub ? 1.5 : 2.25; // rem — matches CSS
+
+  if (len <= 5) {
+    input.style.fontSize = '';           // full size: "2,000"
+  } else if (len <= 6) {
+    input.style.fontSize = (baseSize * 0.92) + 'rem';  // "10,000"
+  } else {
+    input.style.fontSize = (baseSize * 0.82) + 'rem';  // "100,000"
+  }
+}
+
+/**
+ * Fit text in all currency inputs on the page
+ */
+function fitAllInputs() {
+  document.querySelectorAll('.value-input').forEach(fitTextToBox);
 }
 
 /**
@@ -101,6 +130,10 @@ function handleCardSelection(e) {
   updateCardButtonStates(selectedCard);
   toggleObsidianCategory(selectedCard === 'obsidian');
 
+  // Update spending label based on card type
+  const spendLabel = document.getElementById('spend-label');
+  spendLabel.textContent = selectedCard === 'obsidian' ? 'Monthly Spending' : 'Monthly Everyday Spending';
+
   if (selectedCard === 'obsidian') {
     enforceObsidianConstraints();
     syncObsidianBreakdownUI();
@@ -127,13 +160,14 @@ function handleRentInput(e) {
  */
 function handleRentTextInput(e) {
   const rawValue = parseCurrencyInput(e.target.value);
-  const clamped = Math.min(Math.max(rawValue, 0), 10000);
+  const clamped = Math.min(Math.max(rawValue, 0), 100000);
   appState.monthlyRent = clamped;
 
-  // Sync slider position
+  // Sync slider position (capped at slider's max of 10k)
   const slider = document.getElementById('rent-slider');
-  slider.value = clamped;
+  slider.value = Math.min(clamped, 10000);
   updateSliderTrackFill(slider);
+  fitTextToBox(e.target);
   updateCalculations();
 }
 
@@ -142,6 +176,7 @@ function handleRentTextInput(e) {
  */
 function handleRentTextBlur(e) {
   e.target.value = formatNumber(appState.monthlyRent);
+  fitTextToBox(e.target);
 }
 
 /**
@@ -162,13 +197,14 @@ function handleSpendingInput(e) {
  */
 function handleSpendTextInput(e) {
   const rawValue = parseCurrencyInput(e.target.value);
-  const clamped = Math.min(Math.max(rawValue, 0), 10000);
+  const clamped = Math.min(Math.max(rawValue, 0), 100000);
   appState.monthlySpending = clamped;
 
-  // Sync slider position
+  // Sync slider position (capped at slider's max of 10k)
   const slider = document.getElementById('spend-slider');
-  slider.value = clamped;
+  slider.value = Math.min(clamped, 10000);
   updateSliderTrackFill(slider);
+  fitTextToBox(e.target);
   rescaleObsidianBreakdown();
   updateCalculations();
 }
@@ -178,6 +214,7 @@ function handleSpendTextInput(e) {
  */
 function handleSpendTextBlur(e) {
   e.target.value = formatNumber(appState.monthlySpending);
+  fitTextToBox(e.target);
 }
 
 /**
@@ -200,8 +237,8 @@ function rescaleObsidianBreakdown() {
 }
 
 /**
- * Enforce constraints: dining + travel cannot exceed totalSpending
- * everyday = totalSpending - dining - travel (clamped to 0)
+ * Enforce constraints: dining + travel cannot exceed totalSpending.
+ * Everyday is always the remainder.
  */
 function enforceObsidianConstraints() {
   const total = appState.monthlySpending;
@@ -237,8 +274,12 @@ function syncObsidianBreakdownUI() {
   travelSlider.value = appState.obsidianTravel;
 
   // Update text inputs
-  document.getElementById('obsidian-dining-value').value = formatNumber(appState.obsidianDining);
-  document.getElementById('obsidian-travel-value').value = formatNumber(appState.obsidianTravel);
+  const diningInput = document.getElementById('obsidian-dining-value');
+  const travelInput = document.getElementById('obsidian-travel-value');
+  diningInput.value = formatNumber(appState.obsidianDining);
+  travelInput.value = formatNumber(appState.obsidianTravel);
+  fitTextToBox(diningInput);
+  fitTextToBox(travelInput);
 
   // Update everyday display
   document.getElementById('obsidian-everyday-value').textContent = formatNumber(appState.obsidianEveryday);
@@ -262,14 +303,17 @@ function handleObsidianDiningSlider(e) {
 }
 
 function handleObsidianDiningText(e) {
-  appState.obsidianDining = parseCurrencyInput(e.target.value);
+  const rawValue = parseCurrencyInput(e.target.value);
+  appState.obsidianDining = Math.min(Math.max(rawValue, 0), 100000);
   enforceObsidianConstraints();
   syncObsidianBreakdownUI();
+  fitTextToBox(e.target);
   updateCalculations();
 }
 
 function handleObsidianDiningBlur(e) {
   e.target.value = formatNumber(appState.obsidianDining);
+  fitTextToBox(e.target);
 }
 
 // Obsidian Travel Handlers
@@ -281,14 +325,17 @@ function handleObsidianTravelSlider(e) {
 }
 
 function handleObsidianTravelText(e) {
-  appState.obsidianTravel = parseCurrencyInput(e.target.value);
+  const rawValue = parseCurrencyInput(e.target.value);
+  appState.obsidianTravel = Math.min(Math.max(rawValue, 0), 100000);
   enforceObsidianConstraints();
   syncObsidianBreakdownUI();
+  fitTextToBox(e.target);
   updateCalculations();
 }
 
 function handleObsidianTravelBlur(e) {
   e.target.value = formatNumber(appState.obsidianTravel);
+  fitTextToBox(e.target);
 }
 
 /**
