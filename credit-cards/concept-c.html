@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Cards — Wiser Wallet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ww-teal': '#103C54',
+            'ww-blue': '#75C2E6',
+            'ww-green': '#04D380',
+            'ww-bg': '#f9fafb',
+            'ww-dark': '#1f2937',
+            'ww-light': '#6b7280',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .card-row {
+      transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-row:hover {
+      background-color: #f0f9ff;
+      border-color: #75C2E6;
+      box-shadow: 0 2px 8px rgba(117, 194, 230, 0.18);
+    }
+
+    .expand-section {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
+      opacity: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .card-row.expanded .expand-section {
+      max-height: 300px;
+      opacity: 1;
+      padding-top: 0.75rem;
+      padding-bottom: 0.25rem;
+    }
+
+    .chevron-icon {
+      transition: transform 0.3s ease;
+    }
+    .card-row.expanded .chevron-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body class="bg-ww-bg min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200">
+    <div class="max-w-3xl mx-auto px-4 py-5 flex items-center gap-4">
+      <img src="../assets/images/logo.png" alt="Wiser Wallet" class="h-9">
+      <div class="h-6 w-px bg-gray-200"></div>
+      <h1 class="text-xl font-semibold text-ww-dark tracking-tight">Credit Cards</h1>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto px-4 py-8">
+
+    <p class="text-ww-light text-sm mb-6">Compare top credit cards side-by-side. Tap any card to see the full signup bonus details.</p>
+
+    <div class="flex flex-col gap-3" id="card-list">
+
+      <!-- Card 1: Amex Platinum -->
+      <div class="card-row bg-white rounded-xl border border-gray-200 px-4 py-3 cursor-pointer" onclick="toggleCard(this)">
+        <div class="flex items-center gap-4">
+          <img src="../assets/images/cards/Amex Platinum_CR.png" alt="American Express Platinum Card" class="w-20 h-auto rounded-md flex-shrink-0 object-contain">
+          <div class="flex-1 min-w-0">
+            <h2 class="text-sm font-semibold text-ww-dark leading-snug truncate sm:whitespace-normal">American Express Platinum Card&reg;</h2>
+          </div>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-ww-teal/10 text-ww-teal flex-shrink-0">$895/yr</span>
+          <a href="#" onclick="event.stopPropagation()" class="hidden sm:inline-flex items-center px-3.5 py-1.5 bg-ww-teal text-white text-xs font-medium rounded-lg hover:bg-ww-teal/90 transition-colors flex-shrink-0">Learn More</a>
+          <svg class="chevron-icon w-4 h-4 text-ww-light flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="expand-section pl-24 sm:pl-24">
+          <p class="text-sm text-ww-dark leading-relaxed mb-3"><strong>Signup Bonus:</strong> As High As 175,000 points. Find Out Your Offer. You may be eligible for as high as 175,000 Membership Rewards&reg; Points after spending $12,000 in eligible purchases on your new Card in your first 6 months of Membership.</p>
+          <div class="flex items-center gap-4">
+            <a href="#" onclick="event.stopPropagation()" class="sm:hidden inline-flex items-center px-3.5 py-1.5 bg-ww-teal text-white text-xs font-medium rounded-lg hover:bg-ww-teal/90 transition-colors">Learn More</a>
+            <a href="#" onclick="event.stopPropagation()" class="text-xs text-ww-light hover:underline hover:text-ww-dark transition-colors">Rates &amp; Fees</a>
+            <span class="text-gray-300 text-xs">|</span>
+            <a href="#" onclick="event.stopPropagation()" class="text-xs text-ww-light hover:underline hover:text-ww-dark transition-colors">Full Review</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Amex Gold -->
+      <div class="card-row bg-white rounded-xl border border-gray-200 px-4 py-3 cursor-pointer" onclick="toggleCard(this)">
+        <div class="flex items-center gap-4">
+          <img src="../assets/images/cards/Amex Gold_CR.png" alt="American Express Gold Card" class="w-20 h-auto rounded-md flex-shrink-0 object-contain">
+          <div class="flex-1 min-w-0">
+            <h2 class="text-sm font-semibold text-ww-dark leading-snug truncate sm:whitespace-normal">American Express&reg; Gold Card</h2>
+          </div>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-ww-teal/10 text-ww-teal flex-shrink-0">$325/yr</span>
+          <a href="#" onclick="event.stopPropagation()" class="hidden sm:inline-flex items-center px-3.5 py-1.5 bg-ww-teal text-white text-xs font-medium rounded-lg hover:bg-ww-teal/90 transition-colors flex-shrink-0">Learn More</a>
+          <svg class="chevron-icon w-4 h-4 text-ww-light flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="expand-section pl-24 sm:pl-24">
+          <p class="text-sm text-ww-dark leading-relaxed mb-3"><strong>Signup Bonus:</strong> Earn 60,000 Membership Rewards&reg; Points after you spend $6,000 on eligible purchases with your new Card within the first 6 months of Card Membership.</p>
+          <div class="flex items-center gap-4">
+            <a href="#" onclick="event.stopPropagation()" class="sm:hidden inline-flex items-center px-3.5 py-1.5 bg-ww-teal text-white text-xs font-medium rounded-lg hover:bg-ww-teal/90 transition-colors">Learn More</a>
+            <a href="#" onclick="event.stopPropagation()" class="text-xs text-ww-light hover:underline hover:text-ww-dark transition-colors">Rates &amp; Fees</a>
+            <span class="text-gray-300 text-xs">|</span>
+            <a href="#" onclick="event.stopPropagation()" class="text-xs text-ww-light hover:underline hover:text-ww-dark transition-colors">Full Review</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Blue Cash Everyday -->
+      <div class="card-row bg-white rounded-xl border border-gray-200 px-4 py-3 cursor-pointer" onclick="toggleCard(this)">
+        <div class="flex items-center gap-4">
+          <img src="../assets/images/cards/Amex Blue Cash Everyday_CR.png" alt="Blue Cash Everyday Card" class="w-20 h-auto rounded-md flex-shrink-0 object-contain">
+          <div class="flex-1 min-w-0">
+            <h2 class="text-sm font-semibold text-ww-dark leading-snug truncate sm:whitespace-normal">Blue Cash Everyday&reg; Card from American Express</h2>
+          </div>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-ww-green/10 text-ww-green flex-shrink-0">$0/yr</span>
+          <a href="#" onclick="event.stopPropagation()" class="hidden sm:inline-flex items-center px-3.5 py-1.5 bg-ww-teal text-white text-xs font-medium rounded-lg hover:bg-ww-teal/90 transition-colors flex-shrink-0">Learn More</a>
+          <svg class="chevron-icon w-4 h-4 text-ww-light flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="expand-section pl-24 sm:pl-24">
+          <p class="text-sm text-ww-dark leading-relaxed mb-3"><strong>Signup Bonus:</strong> Earn a $200 statement credit after you spend $2,000 in purchases on your new Card within the first 6 months of Card Membership.</p>
+          <div class="flex items-center gap-4">
+            <a href="#" onclick="event.stopPropagation()" class="sm:hidden inline-flex items-center px-3.5 py-1.5 bg-ww-teal text-white text-xs font-medium rounded-lg hover:bg-ww-teal/90 transition-colors">Learn More</a>
+            <a href="#" onclick="event.stopPropagation()" class="text-xs text-ww-light hover:underline hover:text-ww-dark transition-colors">Rates &amp; Fees</a>
+            <span class="text-gray-300 text-xs">|</span>
+            <a href="#" onclick="event.stopPropagation()" class="text-xs text-ww-light hover:underline hover:text-ww-dark transition-colors">Full Review</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Blue Cash Preferred -->
+      <div class="card-row bg-white rounded-xl border border-gray-200 px-4 py-3 cursor-pointer" onclick="toggleCard(this)">
+        <div class="flex items-center gap-4">
+          <img src="../assets/images/cards/Amex Blue Cash Preferred_CR.jpeg" alt="Blue Cash Preferred Card" class="w-20 h-auto rounded-md flex-shrink-0 object-contain">
+          <div class="flex-1 min-w-0">
+            <h2 class="text-sm font-semibold text-ww-dark leading-snug truncate sm:whitespace-normal">Blue Cash Preferred&reg; Card from American Express</h2>
+          </div>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-ww-green/10 text-ww-green flex-shrink-0">$0 intro, then $95/yr</span>
+          <a href="#" onclick="event.stopPropagation()" class="hidden sm:inline-flex items-center px-3.5 py-1.5 bg-ww-teal text-white text-xs font-medium rounded-lg hover:bg-ww-teal/90 transition-colors flex-shrink-0">Learn More</a>
+          <svg class="chevron-icon w-4 h-4 text-ww-light flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="expand-section pl-24 sm:pl-24">
+          <p class="text-sm text-ww-dark leading-relaxed mb-3"><strong>Signup Bonus:</strong> Earn a $250 statement credit after you spend $3,000 in purchases on your new Card within the first 6 months of Card Membership.</p>
+          <div class="flex items-center gap-4">
+            <a href="#" onclick="event.stopPropagation()" class="sm:hidden inline-flex items-center px-3.5 py-1.5 bg-ww-teal text-white text-xs font-medium rounded-lg hover:bg-ww-teal/90 transition-colors">Learn More</a>
+            <a href="#" onclick="event.stopPropagation()" class="text-xs text-ww-light hover:underline hover:text-ww-dark transition-colors">Rates &amp; Fees</a>
+            <span class="text-gray-300 text-xs">|</span>
+            <a href="#" onclick="event.stopPropagation()" class="text-xs text-ww-light hover:underline hover:text-ww-dark transition-colors">Full Review</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Blue Business Plus -->
+      <div class="card-row bg-white rounded-xl border border-gray-200 px-4 py-3 cursor-pointer" onclick="toggleCard(this)">
+        <div class="flex items-center gap-4">
+          <img src="../assets/images/cards/Amex Blue Business Plus.png" alt="Blue Business Plus Credit Card" class="w-20 h-auto rounded-md flex-shrink-0 object-contain">
+          <div class="flex-1 min-w-0">
+            <h2 class="text-sm font-semibold text-ww-dark leading-snug truncate sm:whitespace-normal">The Blue Business&reg; Plus Credit Card from American Express</h2>
+          </div>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-ww-green/10 text-ww-green flex-shrink-0">$0/yr</span>
+          <a href="#" onclick="event.stopPropagation()" class="hidden sm:inline-flex items-center px-3.5 py-1.5 bg-ww-teal text-white text-xs font-medium rounded-lg hover:bg-ww-teal/90 transition-colors flex-shrink-0">Learn More</a>
+          <svg class="chevron-icon w-4 h-4 text-ww-light flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="expand-section pl-24 sm:pl-24">
+          <p class="text-sm text-ww-dark leading-relaxed mb-3"><strong>Signup Bonus:</strong> Earn 15,000 Membership Rewards&reg; Points after you spend $3,000 in eligible purchases on the Card within your first 3 months of Card Membership.</p>
+          <div class="flex items-center gap-4">
+            <a href="#" onclick="event.stopPropagation()" class="sm:hidden inline-flex items-center px-3.5 py-1.5 bg-ww-teal text-white text-xs font-medium rounded-lg hover:bg-ww-teal/90 transition-colors">Learn More</a>
+            <a href="#" onclick="event.stopPropagation()" class="text-xs text-ww-light hover:underline hover:text-ww-dark transition-colors">Rates &amp; Fees</a>
+            <span class="text-gray-300 text-xs">|</span>
+            <a href="#" onclick="event.stopPropagation()" class="text-xs text-ww-light hover:underline hover:text-ww-dark transition-colors">Full Review</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer Disclaimer -->
+  <footer class="max-w-3xl mx-auto px-4 pb-10 pt-4">
+    <p class="text-xs text-ww-light text-center">Card information is subject to change. Visit the card issuer's website for current terms.</p>
+  </footer>
+
+  <script>
+    function toggleCard(row) {
+      const wasExpanded = row.classList.contains('expanded');
+      // Close all other cards
+      document.querySelectorAll('.card-row.expanded').forEach(r => {
+        if (r !== row) r.classList.remove('expanded');
+      });
+      // Toggle clicked card
+      if (wasExpanded) {
+        row.classList.remove('expanded');
+      } else {
+        row.classList.add('expanded');
+      }
+    }
+  </script>
+
+</body>
+</html>

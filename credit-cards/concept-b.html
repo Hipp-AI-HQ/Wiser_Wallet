@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wiser Wallet — Credit Cards</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: '#103C54',
+            'light-blue': '#75C2E6',
+            'success-green': '#04D380',
+            'text-dark': '#1f2937',
+            'text-light': '#6b7280',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .card-slide { display: none; }
+    .card-slide.active { display: flex; }
+    .dot { transition: all 0.3s ease; }
+    .dot.active { background-color: #103C54; transform: scale(1.3); }
+    .card-container {
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .card-container:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(16, 60, 84, 0.12), 0 8px 24px rgba(16, 60, 84, 0.08);
+    }
+    .arrow-btn {
+      transition: all 0.2s ease;
+    }
+    .arrow-btn:hover {
+      background-color: #103C54;
+      color: #ffffff;
+    }
+    .learn-more-btn {
+      transition: all 0.2s ease;
+    }
+    .learn-more-btn:hover {
+      background-color: #75C2E6;
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body class="bg-[#f9fafb] min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <img src="../assets/images/logo.png" alt="Wiser Wallet" class="h-10">
+      </div>
+      <h1 class="text-xl font-semibold text-teal tracking-tight">Credit Cards</h1>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex items-center justify-center px-4 py-12 md:py-16">
+    <div class="w-full max-w-2xl relative">
+
+      <!-- Carousel Container -->
+      <div class="relative flex items-center">
+
+        <!-- Left Arrow -->
+        <button onclick="prevCard()" class="arrow-btn absolute -left-4 md:-left-14 z-10 w-11 h-11 md:w-12 md:h-12 rounded-full border-2 border-teal text-teal flex items-center justify-center bg-white shadow-md cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+        </button>
+
+        <!-- Cards -->
+        <div class="w-full" id="carousel">
+
+          <!-- Card 1: Amex Platinum -->
+          <div class="card-slide active flex-col items-center" data-index="0">
+            <div class="card-container bg-white rounded-2xl shadow-lg p-8 md:p-12 w-full text-center">
+              <div class="mb-8 flex justify-center">
+                <img src="../assets/images/cards/Amex Platinum_CR.png" alt="American Express Platinum Card" class="w-56 md:w-64 drop-shadow-xl">
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-teal mb-2">American Express Platinum Card&reg;</h2>
+              <p class="text-text-light text-sm font-medium mb-6">Annual Fee: <span class="text-text-dark font-semibold">$895</span></p>
+              <p class="text-text-dark text-base leading-relaxed max-w-lg mx-auto mb-8">As High As <strong>175,000 points</strong>. Find Out Your Offer. You may be eligible for as high as 175,000 Membership Rewards&reg; Points after spending $12,000 in eligible purchases on your new Card in your first 6 months of Membership.</p>
+              <a href="#" class="learn-more-btn inline-block bg-teal text-white font-semibold text-lg px-10 py-3.5 rounded-full shadow-md">Learn More</a>
+              <div class="mt-5 flex items-center justify-center gap-3 text-xs text-text-light">
+                <a href="#" class="hover:underline">Rates &amp; Fees</a>
+                <span class="text-gray-300">|</span>
+                <a href="#" class="hover:underline">Full Review</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Amex Gold -->
+          <div class="card-slide flex-col items-center" data-index="1">
+            <div class="card-container bg-white rounded-2xl shadow-lg p-8 md:p-12 w-full text-center">
+              <div class="mb-8 flex justify-center">
+                <img src="../assets/images/cards/Amex Gold_CR.png" alt="American Express Gold Card" class="w-56 md:w-64 drop-shadow-xl">
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-teal mb-2">American Express&reg; Gold Card</h2>
+              <p class="text-text-light text-sm font-medium mb-6">Annual Fee: <span class="text-text-dark font-semibold">$325</span></p>
+              <p class="text-text-dark text-base leading-relaxed max-w-lg mx-auto mb-8">Earn <strong>60,000 Membership Rewards&reg; Points</strong> after you spend $6,000 on eligible purchases with your new Card within the first 6 months of Card Membership.</p>
+              <a href="#" class="learn-more-btn inline-block bg-teal text-white font-semibold text-lg px-10 py-3.5 rounded-full shadow-md">Learn More</a>
+              <div class="mt-5 flex items-center justify-center gap-3 text-xs text-text-light">
+                <a href="#" class="hover:underline">Rates &amp; Fees</a>
+                <span class="text-gray-300">|</span>
+                <a href="#" class="hover:underline">Full Review</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Blue Cash Everyday -->
+          <div class="card-slide flex-col items-center" data-index="2">
+            <div class="card-container bg-white rounded-2xl shadow-lg p-8 md:p-12 w-full text-center">
+              <div class="mb-8 flex justify-center">
+                <img src="../assets/images/cards/Amex Blue Cash Everyday_CR.png" alt="Blue Cash Everyday Card" class="w-56 md:w-64 drop-shadow-xl">
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-teal mb-2">Blue Cash Everyday&reg; Card from American Express</h2>
+              <p class="text-text-light text-sm font-medium mb-6">Annual Fee: <span class="text-text-dark font-semibold">$0</span></p>
+              <p class="text-text-dark text-base leading-relaxed max-w-lg mx-auto mb-8">Earn a <strong>$200 statement credit</strong> after you spend $2,000 in purchases on your new Card within the first 6 months of Card Membership.</p>
+              <a href="#" class="learn-more-btn inline-block bg-teal text-white font-semibold text-lg px-10 py-3.5 rounded-full shadow-md">Learn More</a>
+              <div class="mt-5 flex items-center justify-center gap-3 text-xs text-text-light">
+                <a href="#" class="hover:underline">Rates &amp; Fees</a>
+                <span class="text-gray-300">|</span>
+                <a href="#" class="hover:underline">Full Review</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Blue Cash Preferred -->
+          <div class="card-slide flex-col items-center" data-index="3">
+            <div class="card-container bg-white rounded-2xl shadow-lg p-8 md:p-12 w-full text-center">
+              <div class="mb-8 flex justify-center">
+                <img src="../assets/images/cards/Amex Blue Cash Preferred_CR.jpeg" alt="Blue Cash Preferred Card" class="w-56 md:w-64 drop-shadow-xl">
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-teal mb-2">Blue Cash Preferred&reg; Card from American Express</h2>
+              <p class="text-text-light text-sm font-medium mb-6">Annual Fee: <span class="text-text-dark font-semibold">$0 intro for the first year, then $95</span></p>
+              <p class="text-text-dark text-base leading-relaxed max-w-lg mx-auto mb-8">Earn a <strong>$250 statement credit</strong> after you spend $3,000 in purchases on your new Card within the first 6 months of Card Membership.</p>
+              <a href="#" class="learn-more-btn inline-block bg-teal text-white font-semibold text-lg px-10 py-3.5 rounded-full shadow-md">Learn More</a>
+              <div class="mt-5 flex items-center justify-center gap-3 text-xs text-text-light">
+                <a href="#" class="hover:underline">Rates &amp; Fees</a>
+                <span class="text-gray-300">|</span>
+                <a href="#" class="hover:underline">Full Review</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Blue Business Plus -->
+          <div class="card-slide flex-col items-center" data-index="4">
+            <div class="card-container bg-white rounded-2xl shadow-lg p-8 md:p-12 w-full text-center">
+              <div class="mb-8 flex justify-center">
+                <img src="../assets/images/cards/Amex Blue Business Plus.png" alt="Blue Business Plus Card" class="w-56 md:w-64 drop-shadow-xl">
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-teal mb-2">The Blue Business&reg; Plus Credit Card from American Express</h2>
+              <p class="text-text-light text-sm font-medium mb-6">Annual Fee: <span class="text-text-dark font-semibold">$0</span></p>
+              <p class="text-text-dark text-base leading-relaxed max-w-lg mx-auto mb-8">Earn <strong>15,000 Membership Rewards&reg; Points</strong> after you spend $3,000 in eligible purchases on the Card within your first 3 months of Card Membership.</p>
+              <a href="#" class="learn-more-btn inline-block bg-teal text-white font-semibold text-lg px-10 py-3.5 rounded-full shadow-md">Learn More</a>
+              <div class="mt-5 flex items-center justify-center gap-3 text-xs text-text-light">
+                <a href="#" class="hover:underline">Rates &amp; Fees</a>
+                <span class="text-gray-300">|</span>
+                <a href="#" class="hover:underline">Full Review</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Arrow -->
+        <button onclick="nextCard()" class="arrow-btn absolute -right-4 md:-right-14 z-10 w-11 h-11 md:w-12 md:h-12 rounded-full border-2 border-teal text-teal flex items-center justify-center bg-white shadow-md cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+        </button>
+
+      </div>
+
+      <!-- Dot Indicators -->
+      <div class="flex items-center justify-center gap-3 mt-8" id="dots">
+        <button onclick="goToCard(0)" class="dot w-3 h-3 rounded-full bg-gray-300 active cursor-pointer"></button>
+        <button onclick="goToCard(1)" class="dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer"></button>
+        <button onclick="goToCard(2)" class="dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer"></button>
+        <button onclick="goToCard(3)" class="dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer"></button>
+        <button onclick="goToCard(4)" class="dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer"></button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Disclaimer -->
+  <footer class="py-6 px-6 text-center">
+    <p class="text-xs text-text-light max-w-xl mx-auto leading-relaxed">Card information is subject to change. Visit the card issuer's website for current terms.</p>
+  </footer>
+
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.card-slide');
+    const dots = document.querySelectorAll('.dot');
+    const total = slides.length;
+
+    function showCard(index) {
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+      current = index;
+    }
+
+    function nextCard() {
+      showCard((current + 1) % total);
+    }
+
+    function prevCard() {
+      showCard((current - 1 + total) % total);
+    }
+
+    function goToCard(index) {
+      showCard(index);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextCard();
+      if (e.key === 'ArrowLeft') prevCard();
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const carousel = document.getElementById('carousel');
+
+    carousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextCard();
+        else prevCard();
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

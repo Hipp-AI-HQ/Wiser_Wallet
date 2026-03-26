@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credit Cards — Wiser Wallet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            teal: {
+              primary: '#103C54',
+            },
+            blue: {
+              light: '#75C2E6',
+            },
+            green: {
+              success: '#04D380',
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    .card-hover {
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      border: 2px solid transparent;
+    }
+    .card-hover:hover {
+      border-color: #75C2E6;
+      box-shadow: 0 4px 24px rgba(107, 114, 128, 0.18);
+    }
+    .btn-learn-more {
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+    .btn-learn-more:hover {
+      background-color: #1a5070;
+      transform: translateY(-1px);
+    }
+    .link-subtle {
+      transition: color 0.2s ease;
+    }
+    .link-subtle:hover {
+      color: #103C54;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="bg-[#f9fafb] min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center gap-4">
+      <img src="../assets/images/logo.png" alt="Wiser Wallet" class="h-10 w-auto" />
+      <div class="h-6 w-px bg-gray-200"></div>
+      <h1 class="text-xl font-semibold text-[#1f2937]">Credit Cards</h1>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <p class="text-[#6b7280] text-sm mb-8 max-w-2xl">
+      Compare top credit cards and find the right fit for your spending habits. Click "Learn More" to explore each card's full benefits.
+    </p>
+
+    <!-- Card Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+      <!-- Card 1: Amex Platinum -->
+      <div class="card-hover bg-white rounded-2xl p-6 flex flex-col sm:flex-row gap-6 items-start">
+        <div class="flex-shrink-0 flex items-center justify-center w-[140px]">
+          <img
+            src="../assets/images/cards/Amex Platinum_CR.png"
+            alt="American Express Platinum Card"
+            class="w-[140px] h-auto object-contain rounded-lg"
+          />
+        </div>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-semibold text-[#1f2937] leading-snug mb-2">
+            American Express Platinum Card&reg;
+          </h2>
+          <p class="text-sm text-[#6b7280] mb-1">
+            <span class="font-medium text-[#1f2937]">Annual Fee:</span> $895
+          </p>
+          <p class="text-sm text-[#6b7280] mb-4 leading-relaxed">
+            <span class="font-medium text-[#1f2937]">Signup Bonus:</span>
+            As High As 175,000 points. Find Out Your Offer. You may be eligible for as high as 175,000 Membership Rewards&reg; Points after spending $12,000 in eligible purchases on your new Card in your first 6 months of Membership.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href="#"
+              class="btn-learn-more inline-block bg-[#103C54] text-white text-sm font-medium px-5 py-2.5 rounded-full"
+            >
+              Learn More
+            </a>
+            <span class="flex items-center gap-2 text-xs text-[#6b7280]">
+              <a href="#" class="link-subtle">Rates &amp; Fees</a>
+              <span class="text-gray-300">|</span>
+              <a href="#" class="link-subtle">Full Review</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Amex Gold -->
+      <div class="card-hover bg-white rounded-2xl p-6 flex flex-col sm:flex-row gap-6 items-start">
+        <div class="flex-shrink-0 flex items-center justify-center w-[140px]">
+          <img
+            src="../assets/images/cards/Amex Gold_CR.png"
+            alt="American Express Gold Card"
+            class="w-[140px] h-auto object-contain rounded-lg"
+          />
+        </div>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-semibold text-[#1f2937] leading-snug mb-2">
+            American Express&reg; Gold Card
+          </h2>
+          <p class="text-sm text-[#6b7280] mb-1">
+            <span class="font-medium text-[#1f2937]">Annual Fee:</span> $325
+          </p>
+          <p class="text-sm text-[#6b7280] mb-4 leading-relaxed">
+            <span class="font-medium text-[#1f2937]">Signup Bonus:</span>
+            Earn 60,000 Membership Rewards&reg; Points after you spend $6,000 on eligible purchases with your new Card within the first 6 months of Card Membership.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href="#"
+              class="btn-learn-more inline-block bg-[#103C54] text-white text-sm font-medium px-5 py-2.5 rounded-full"
+            >
+              Learn More
+            </a>
+            <span class="flex items-center gap-2 text-xs text-[#6b7280]">
+              <a href="#" class="link-subtle">Rates &amp; Fees</a>
+              <span class="text-gray-300">|</span>
+              <a href="#" class="link-subtle">Full Review</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Blue Cash Everyday -->
+      <div class="card-hover bg-white rounded-2xl p-6 flex flex-col sm:flex-row gap-6 items-start">
+        <div class="flex-shrink-0 flex items-center justify-center w-[140px]">
+          <img
+            src="../assets/images/cards/Amex Blue Cash Everyday_CR.png"
+            alt="Blue Cash Everyday Card from American Express"
+            class="w-[140px] h-auto object-contain rounded-lg"
+          />
+        </div>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-semibold text-[#1f2937] leading-snug mb-2">
+            Blue Cash Everyday&reg; Card from American Express
+          </h2>
+          <p class="text-sm text-[#6b7280] mb-1">
+            <span class="font-medium text-[#1f2937]">Annual Fee:</span> $0
+          </p>
+          <p class="text-sm text-[#6b7280] mb-4 leading-relaxed">
+            <span class="font-medium text-[#1f2937]">Signup Bonus:</span>
+            Earn a $200 statement credit after you spend $2,000 in purchases on your new Card within the first 6 months of Card Membership.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href="#"
+              class="btn-learn-more inline-block bg-[#103C54] text-white text-sm font-medium px-5 py-2.5 rounded-full"
+            >
+              Learn More
+            </a>
+            <span class="flex items-center gap-2 text-xs text-[#6b7280]">
+              <a href="#" class="link-subtle">Rates &amp; Fees</a>
+              <span class="text-gray-300">|</span>
+              <a href="#" class="link-subtle">Full Review</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Blue Cash Preferred -->
+      <div class="card-hover bg-white rounded-2xl p-6 flex flex-col sm:flex-row gap-6 items-start">
+        <div class="flex-shrink-0 flex items-center justify-center w-[140px]">
+          <img
+            src="../assets/images/cards/Amex Blue Cash Preferred_CR.jpeg"
+            alt="Blue Cash Preferred Card from American Express"
+            class="w-[140px] h-auto object-contain rounded-lg"
+          />
+        </div>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-semibold text-[#1f2937] leading-snug mb-2">
+            Blue Cash Preferred&reg; Card from American Express
+          </h2>
+          <p class="text-sm text-[#6b7280] mb-1">
+            <span class="font-medium text-[#1f2937]">Annual Fee:</span> $0 intro annual fee for the first year, then $95
+          </p>
+          <p class="text-sm text-[#6b7280] mb-4 leading-relaxed">
+            <span class="font-medium text-[#1f2937]">Signup Bonus:</span>
+            Earn a $250 statement credit after you spend $3,000 in purchases on your new Card within the first 6 months of Card Membership.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href="#"
+              class="btn-learn-more inline-block bg-[#103C54] text-white text-sm font-medium px-5 py-2.5 rounded-full"
+            >
+              Learn More
+            </a>
+            <span class="flex items-center gap-2 text-xs text-[#6b7280]">
+              <a href="#" class="link-subtle">Rates &amp; Fees</a>
+              <span class="text-gray-300">|</span>
+              <a href="#" class="link-subtle">Full Review</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Blue Business Plus -->
+      <div class="card-hover bg-white rounded-2xl p-6 flex flex-col sm:flex-row gap-6 items-start">
+        <div class="flex-shrink-0 flex items-center justify-center w-[140px]">
+          <img
+            src="../assets/images/cards/Amex Blue Business Plus.png"
+            alt="The Blue Business Plus Credit Card from American Express"
+            class="w-[140px] h-auto object-contain rounded-lg"
+          />
+        </div>
+        <div class="flex-1 min-w-0">
+          <h2 class="text-lg font-semibold text-[#1f2937] leading-snug mb-2">
+            The Blue Business&reg; Plus Credit Card from American Express
+          </h2>
+          <p class="text-sm text-[#6b7280] mb-1">
+            <span class="font-medium text-[#1f2937]">Annual Fee:</span> $0
+          </p>
+          <p class="text-sm text-[#6b7280] mb-4 leading-relaxed">
+            <span class="font-medium text-[#1f2937]">Signup Bonus:</span>
+            Earn 15,000 Membership Rewards&reg; Points after you spend $3,000 in eligible purchases on the Card within your first 3 months of Card Membership.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href="#"
+              class="btn-learn-more inline-block bg-[#103C54] text-white text-sm font-medium px-5 py-2.5 rounded-full"
+            >
+              Learn More
+            </a>
+            <span class="flex items-center gap-2 text-xs text-[#6b7280]">
+              <a href="#" class="link-subtle">Rates &amp; Fees</a>
+              <span class="text-gray-300">|</span>
+              <a href="#" class="link-subtle">Full Review</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer Disclaimer -->
+  <footer class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+    <p class="text-xs text-[#6b7280] border-t border-gray-200 pt-6">
+      Card information is subject to change. Visit the card issuer's website for current terms.
+    </p>
+  </footer>
+
+</body>
+</html>
